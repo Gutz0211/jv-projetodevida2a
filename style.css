@@ -9,6 +9,14 @@
   --texto-fundo: rgba(58, 55, 94, 0.3);
 }
 
+.nome { font-size: 40px; }
+.especialidade { font-size: 12px; }
+.pedro { color: red; }
+.lara { color: green; }
+.sofia { color: blue; }
+
+div { display:inline-block; text-align:center; }
+
 body {
   background-color: var(--cor-de-fundo);
   color: var(--branco);
@@ -97,3 +105,27 @@ body {
   font-size: 20px;
   text-align: center;
 }
+
+.contador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contador-digito {
+  padding: 0 16px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.contador-digito-numero {
+  font-size: 80px;
+  margin: 0;
+}
+
+.contador-digito-texto {
+  color: var(--verde);
+  font-size: 20px;
+  margin: 0;
+}
+
