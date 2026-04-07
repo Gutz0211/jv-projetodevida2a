@@ -119,19 +119,15 @@ function calculaTempo(tempoObjetivo) {
   let minutos = Math.floor(segundos / 60);
   let horas = Math.floor(minutos / 60);
   let dias = Math.floor(horas / 24);
-if (tempoFinal > 0) {
-  return (
-    dias +
-    " dias " +
-    horas +
-    " horas " +
-    minutos +
-    " minutos " +
-    segundos +
-    " segundos"
-  );
-} else {
-  return "Prazo Finalizado";
+
+  segundos %= 60;
+  minutos %= 60;
+  horas %= 24;
+  if (tempoFinal > 0) {
+    return [dias, horas, minutos, segundos];
+  } else {
+    return [0, 0, 0, 0];
+  }
 }
 
 // Para cada objetivo na lista de contadores
@@ -140,10 +136,15 @@ for (let i = 0; i < contadores.length; i++) {
   contadores[i].textContent = calculaTempo(tempos[i]);
 }
 
-function atualizaCronometro() {
-  for (let i = 0; i < contadores.length; i++) {
-    contadores[i].textContent = calculaTempo(tempos[i]);
-  }
+function atualizaCronometro(){
+    document.getElementById("dias0").textContent = calculaTempo(tempos[0])[0];
+    document.getElementById("horas0").textContent = calculaTempo(tempos[0])[1];
+    document.getElementById("min0").textContent = calculaTempo(tempos[0])[2];
+
+    for (let i=0; i<contadores.length;i++){
+        document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3];
+        console.log("seg"+i);
+    }
 }
 
 function comecaCronometro() {
@@ -163,3 +164,8 @@ function calculaDias(diasAniversario) {
     return diasRestantes;
 }
 //comecaCronometro();
+
+const pintura = ["Solitude", "2018", "aquarela"];
+document.getElementById("titulo").textContent = pintura[2];
+
+const livro = ["O Pequeno Príncipe", "1943"];
